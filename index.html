@@ -30,21 +30,4 @@
 <body>
     <div class="sensor-box">
         <h1>Live Temperature - IoT Sensor</h1>
-        <div class="data" id="temperature">Temperature: Loading...</div>
-    </div>
-
-    <script>
-        const apiUrl = 'http://bopojoe.ddns.net:5050/temperature';
-
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('temperature').innerText = `Temperature: ${data.temperature} °C`;
-            })
-            .catch(error => {
-                console.error('Error fetching sensor data:', error);
-                document.querySelector('.sensor-box').innerHTML = 'Error loading temperature data';
-            });
-    </script>
-</body>
-</html>
+        <div class="data" id="temperature">
