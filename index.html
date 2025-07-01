@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IoT Sensor - Live Temperature</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+        .sensor-box {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .data {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="sensor-box">
+        <h1>Live Temperature - IoT Sensor</h1>
+        <div class="data" id="temperature">Temperature: Loading...</div>
+    </div>
+
+    <script>
+        const apiUrl = 'http://bopojoe.ddns.net:5050/temperature';
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('temperature').innerText = `Temperature: ${data.temperature} °C`;
+            })
+            .catch(error => {
+                console.error('Error fetching sensor data:', error);
+                document.querySelector('.sensor-box').innerHTML = 'Error loading temperature data';
+            });
+    </script>
+</body>
+</html>
